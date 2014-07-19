@@ -1,2 +1,62 @@
-%h1 Home#show
-%p Find me in app/views/home/show.html.haml
+.row
+  .col-sm-9
+    = link_to '+ 新しい記事を作成する', new_home_article_path, class: 'btn btn-primary btn-lg'
+
+    %h3
+      公開記事
+      %span.badge{style: 'vertical-align: 5px'}= @articles.published.size
+
+    - @articles.published.each do |article|
+      .list-group
+        = link_to edit_home_article_path(article), class: 'list-group-item' do
+          %h3.list-group-item-heading
+            = article.title
+          %div.list-group-item-text
+            = truncate(article.body_text)
+          %div.list-group-item-text.pull-right
+            [#{article.aasm_state}]
+            = safe_date_localize article.published_at
+          .clearfix
+
+    %h3
+      下書記事
+      %span.badge{style: 'vertical-align: 5px'}= @articles.draft.size
+
+    - @articles.draft.each do |article|
+      .list-group
+        = link_to edit_home_article_path(article), class: 'list-group-item' do
+          %h3.list-group-item-heading
+            = article.title
+          %div.list-group-item-text
+            = truncate(article.body_text)
+          %div.list-group-item-text.pull-right
+            [#{article.aasm_state}]
+            = safe_date_localize article.published_at
+          .clearfix
+
+    %h3
+      コメント
+      %span.badge{style: 'vertical-align: 5px'}= current_user.comments.size
+
+    - @comments.each do |comment|
+      .list-group
+        = link_to u_article_path(comment.article.user, comment.article), class: 'list-group-item' do
+          %h3.list-group-item-heading
+            = comment.body
+          %div.list-group-item-text
+            .pull-left
+              = comment.article.title
+            .pull-right
+              = safe_date_localize comment.created_at
+            .clearfix
+
+  .col-sm-3
+    .thumbnail
+      .text-center{style: 'height: 130px'}= image_tag current_user.gravatar_url
+      .caption.text-center
+        %p #{current_user.user_name} @#{current_user.screen_name}
+        %p= current_user.user_description
+
+
+    .col-xs-12{style: 'margin-bottom: 5px;'}= link_to 'プロフィール編集', edit_home_settings_profiles_path, class: 'btn btn-default btn-block'
+    .col-xs-12= link_to 'アカウント編集', edit_home_settings_accounts_path, class: 'btn btn-default btn-block'

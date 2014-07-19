@@ -1,0 +1,10 @@
+
+.list-group
+
+  = link_to 'アカウント', edit_home_settings_accounts_path, class: 'list-group-item ' + (edit_home_settings_accounts_path == request.fullpath ? 'active' : '')
+
+  = link_to 'プロフィール', edit_home_settings_profiles_path, class: 'list-group-item ' + (edit_home_settings_profiles_path == request.fullpath ? 'active' : '')
+
+  = link_to 'パスワード', edit_home_settings_passwords_path, class: 'list-group-item ' + (edit_home_settings_passwords_path == request.fullpath ? 'active' : '')
+
+  = link_to '退会', edit_home_withdrawals_path, class: 'list-group-item'

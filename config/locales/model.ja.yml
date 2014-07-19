@@ -1,0 +1,31 @@
+# http://qiita.com/yshr04hrk/items/cb7b81c104321f660661
+
+ja:
+  activerecord:
+    models:
+      article: 記事
+
+    attributes:
+      article:
+        title: タイトル
+        body_source: 内容
+        aasm_state: 公開状態
+
+      user:
+        screen_name: ユーザ名
+        user_name: 名前
+        user_description: 自己紹介
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード(確認)
+        remember_me: ログインしたままにする
+
+      comment:
+        body: コメント
+
+  activemodel:
+    attributes:
+      change_password:
+        current_password: 現在のパスワード
+        new_password: 新しいパスワード
+        new_password_confirmation: 新しいパスワード(確認)

@@ -1,0 +1,26 @@
+- if current_user == @article.user
+  %div
+    .pull-right
+      = link_to '編集', edit_home_article_path(@article)
+
+%h1
+  = link_to @article.title, u_article_path(@article.user.screen_name, @article)
+
+%div
+  = raw @article.body
+
+%div
+  .pull-right
+    = link_to u_path(@article.user.screen_name) do
+      = image_tag @article.user.gravatar_url(length: 20)
+      = @article.user.screen_name
+    = l @article.published_at
+
+.clearfix
+
+%hr
+
+= render partial: 'comments', locals: {comments: @article.comments.order(:created_at)}
+
+- if current_user
+  = render partial: 'home/comments/form', locals: {comment: @comment}

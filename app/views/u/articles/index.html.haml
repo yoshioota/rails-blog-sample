@@ -1,0 +1,8 @@
+.page-header
+  %h1
+    #{@user.screen_name} さんの記事一覧
+
+- @articles.each do |article|
+  %div
+    %h2= link_to article.title, u_article_path(article.user.screen_name, article)
+    %div= truncate(article.body_text)

@@ -1,0 +1,17 @@
+.row
+  .col-xs-2
+    = image_tag @user.gravatar_url(length: 100), class: 'img-responsive img-rounded'
+  .col-xs-10
+    %div= "#{@user.user_name}@#{@user.screen_name}"
+    %div{style: 'margin-top: 10px;'}= @user.user_description
+
+.row
+  .col-xs-12
+    %h3 記事一覧
+    - @user.articles.published.each do |article|
+      .list-group
+        %a.list-group-item{:href => u_article_path(@user, article)}
+          %h4.list-group-item-heading= article.title
+          %p.list-group-item-text
+            = truncate(article.body_text)
+            .pull-right= safe_date_localize(article.published_at)

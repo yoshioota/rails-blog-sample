@@ -1,0 +1,16 @@
+.page-header
+  %h1 ユーザー登録
+
+.row
+  .col-xs-12
+    = bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), layout: :horizontal) do |f|
+
+      = f.alert_message '以下の項目を修正して下さい。'
+
+      = f.text_field :screen_name, autofocus: true
+      = f.email_field :email, autofocus: true
+      = f.password_field :password, autocomplete: 'off'
+      = f.password_field :password_confirmation, autocomplete: 'off'
+
+      .form_group
+        .col-sm-offset-2.col-sm-10= f.submit '登録する', class: 'btn btn-lg btn-success'

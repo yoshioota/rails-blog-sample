@@ -1,2 +1,27 @@
-%h1 Welcome#index
-%p Find me in app/views/welcome/index.html.haml
+- content_for(:container_class, 'dummy-container')
+
+.jumbotron.text-center{style: 'margin-top: -20px;'}
+  %h1
+    Ruby On Railsで作った<br>ブログサービスのサンプルサイトです
+
+%div.text-center
+  = link_to '始める', new_user_registration_path, class: 'btn btn-success btn-lg'
+
+.container
+  .row
+    .col-sm-12
+      %h4
+        最新記事
+      - Article.published.limit(10).each do |article|
+        .list-group
+          = link_to u_article_path(article.user.screen_name, article), class: 'list-group-item' do
+            %h4.list-group-item-heading
+              = article.title
+            %p.list-group-item-text
+              = truncate article.body_text
+            %div
+              .pull-right
+                = image_tag article.user.gravatar_url(length: 20)
+                = article.user.screen_name
+                = safe_date_localize article.published_at
+            .clearfix

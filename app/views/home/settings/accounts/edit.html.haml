@@ -1,0 +1,18 @@
+.col-sm-3
+  = render partial: 'home/settings/shared/menu'
+
+.col-sm-9
+  .row
+    = bootstrap_form_for current_user, url: home_settings_accounts_path, method: :patch, layout: :horizontal do |f|
+
+      = f.text_field :screen_name
+
+      = f.text_field :email
+
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          = f.submit '更新する', class: 'btn btn-primary'
+
+  .row
+    .col-sm-offset-2.col-sm-10
+

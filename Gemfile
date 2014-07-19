@@ -35,40 +35,31 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
-gem 'haml-rails'
+gem 'foreman'
+gem 'puma'
 
 gem 'devise'
-gem 'omniauth'
-gem 'omniauth-twitter'
-gem 'omniauth-github'
-gem 'omniauth-facebook'
+
+gem 'aasm'
+
+gem 'haml-rails'
 
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'compass-rails'
 gem 'font-awesome-rails'
-gem 'simple_form'
+
+gem 'bootstrap_form'
+# gem 'simple_form'
+
+gem 'html2haml'
+gem 'redcarpet'
+gem 'rinku'
+gem 'nokogiri'
+
 gem 'kaminari'
 
-
-# Server
-gem 'puma'
-gem 'rack-rewrite'
-
 group :development do
-  # Debugs
   gem 'awesome_print'
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -83,38 +74,16 @@ group :development do
   gem 'quiet_assets'
   gem 'tapp'
   gem 'view_source_map'
-  gem 'i18n-tasks'
   gem 'thin'
+
+  gem 'rails-footnotes', '>= 4.0.0', '<5'
 end
 
 group :test, :development do
-  # TDD
-  gem 'brakeman'
-  gem 'capybara'
-  gem 'database_cleaner'
-  gem 'delorean'
-  gem 'factory_girl'
-  gem 'factory_girl_rails'
-  gem 'faker'
-  gem 'guard-rspec', require: false
-  gem 'guard-sprockets2'
-  gem 'json_expressions'
-  gem 'launchy'
-  gem 'poltergeist'
-  gem 'rails-db-resetup'
-  gem 'rb-fsevent', require: RUBY_PLATFORM.downcase =~ /darwin/ ? 'rb-fsevent' : false
-  gem 'rspec', '~> 3.0'
-  gem 'rspec-rails'
-  gem 'minitest'
-  gem 'shoulda-matchers', '2.5.0'
-  gem 'spring-commands-rspec'
-  gem 'json_spec'
+  gem 'guard-livereload', require: false
 end
 
 group :production, :staging do
   gem 'rails_12factor'
   gem 'newrelic_rpm'
 end
-
-gem 'oj'
-gem 'aasm'

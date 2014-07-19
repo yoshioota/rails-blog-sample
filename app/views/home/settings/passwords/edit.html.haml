@@ -1,0 +1,16 @@
+.col-sm-3
+  = render partial: 'home/settings/shared/menu'
+
+.col-sm-9
+  .row
+    = bootstrap_form_for @change_password, url: home_settings_passwords_path, method: :patch, layout: :horizontal do |f|
+
+      = f.password_field :current_password, value: @change_password.current_password
+
+      = f.password_field :new_password, value: @change_password.new_password
+
+      = f.password_field :new_password_confirmation, value: @change_password.new_password_confirmation
+
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          = f.submit '更新する', class: 'btn btn-primary'

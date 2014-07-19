@@ -1,0 +1,16 @@
+.col-sm-3
+  = render partial: 'home/settings/shared/menu'
+
+.col-sm-9
+  .row
+    = bootstrap_form_for current_user, layout: :horizontal, url: home_settings_profiles_path, method: :PUT do |f|
+
+      = f.alert_message '以下の項目を修正して下さい。'
+
+      = f.text_field :user_name
+
+      = f.text_area :user_description
+
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          = f.submit '更新する', class: 'btn btn-primary'

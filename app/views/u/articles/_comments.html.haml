@@ -1,0 +1,9 @@
+.js_comments
+  - comments.each do |comment|
+    %div{style: 'margin-bottom: 5px;'}
+      = image_tag comment.user.gravatar_url(length: 30)
+      = link_to comment.user.screen_name, u_path(comment.user.screen_name)
+      .pull-right
+        = l comment.created_at
+    %div.well.well-sm
+      = simple_format comment.body, wrapper_tag: ''
